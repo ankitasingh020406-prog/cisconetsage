@@ -1,0 +1,6 @@
+case_id,ai_answer,human_decision,correction,reason
+NET-003,"DNS service disabled on client subnet gateway",Edited,"Verify the actual DNS server and client DNS setting","The supplied evidence is gateway-focused; client-side DNS configuration also needs verification."
+NET-007,"Guest traffic should be denied by ACL",Accepted,"","Evidence shows an overly permissive guest ACL."
+NET-012,"OSPF route problem",Edited,"Passive interface is enabled on the active OSPF link","The exact evidence identifies the passive-interface configuration."
+NET-020,"Gateway configuration problem",Accepted,"","Gateway 10.1.1.30 is outside the 10.1.1.48/28 subnet."
+NET-021,"OSPF redistribution issue",Edited,"Add the subnets keyword to redistribution","The command shown explicitly omits the subnets keyword."
