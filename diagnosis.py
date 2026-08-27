@@ -97,17 +97,16 @@ def ai_diagnose(row, client):
     Sends the selected networking case to OpenAI
     and returns a structured diagnosis.
     """
-    prompt = DIAGNOSIS_PROMPT.format(
-    case_id=row["case_id"],
-    symptom=row["symptom"],
-    topology_note=row["topology_note"],
-    show_outputs=row["show_outputs"],
-    osi_layer=row["osi_layer"],
-    concept_tag=row["concept_tag"],
-    severity=row["severity"],
-)
 
-    
+    prompt = DIAGNOSIS_PROMPT
+
+    prompt = prompt.replace("{{case_id}}", str(row["case_id"]))
+    prompt = prompt.replace("{{symptom}}", str(row["symptom"]))
+    prompt = prompt.replace("{{topology_note}}", str(row["topology_note"]))
+    prompt = prompt.replace("{{show_outputs}}", str(row["show_outputs"]))
+    prompt = prompt.replace("{{osi_layer}}", str(row["osi_layer"]))
+    prompt = prompt.replace("{{concept_tag}}", str(row["concept_tag"]))
+    prompt = prompt.replace("{{severity}}", str(row["severity"]))
 
     response = client.responses.create(
         model="gpt-5-mini",
