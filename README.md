@@ -766,7 +766,7 @@ requires human approval.
 
 ## 👩‍💻 Created & Coded By
 
-**Shubhangi Verma**  
+**Ankita Kumari**  
 *Designed, developed, and coded with ❤️ for network troubleshooting and Responsible AI.*
 
 ---
