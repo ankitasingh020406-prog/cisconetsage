@@ -11,15 +11,62 @@ st.set_page_config(page_title="NetSage AI", page_icon="🌐", layout="wide")
 st.markdown("""
 <style>
 
-    /* ---------- GLOBAL ---------- */
+    /* =========================================================
+       NETSAGE AI — BLACK + GREEN THEME
+       ========================================================= */
+
+    :root {
+    --bg: #030303;
+    --bg-soft: #080808;
+    --card: #0d0d0d;
+    --card-hover: #151515;
+
+    --red: #ff2b2b;
+    --red-bright: #ff4b4b;
+    --red-dark: #9e1111;
+    --red-soft: rgba(255, 43, 43, 0.10);
+    --red-border: rgba(255, 43, 43, 0.28);
+
+    --green: #00e676;
+    --green-bright: #39ff88;
+    --green-dark: #00a844;
+    --green-soft: rgba(0, 230, 118, 0.10);
+    --green-border: rgba(0, 230, 118, 0.22);
+
+    --text: #f5f5f5;
+    --text-soft: #c2c2c2;
+    --text-muted: #777777;
+
+    --warning: #ffd166;
+}
+
+
+    /* ---------- GLOBAL APP ---------- */
 
     .stApp {
         background:
-            radial-gradient(circle at 10% 10%, rgba(0, 180, 255, 0.10), transparent 30%),
-            radial-gradient(circle at 90% 20%, rgba(100, 80, 255, 0.10), transparent 30%),
-            linear-gradient(135deg, #050914 0%, #08111f 50%, #050914 100%);
-        color: #e8f1ff;
+            radial-gradient(
+                circle at 15% 5%,
+                rgba(0, 255, 102, 0.08),
+                transparent 28%
+            ),
+            radial-gradient(
+                circle at 90% 15%,
+                rgba(0, 255, 102, 0.045),
+                transparent 25%
+            ),
+            linear-gradient(
+                135deg,
+                #020402 0%,
+                #050805 45%,
+                #030603 100%
+            );
+
+        color: var(--text);
     }
+
+
+    /* ---------- MAIN CONTENT ---------- */
 
     .main .block-container {
         max-width: 1400px;
@@ -27,220 +74,656 @@ st.markdown("""
         padding-bottom: 4rem;
     }
 
+
     /* ---------- HEADINGS ---------- */
 
     h1 {
-        font-size: 3rem !important;
-        font-weight: 800 !important;
-        letter-spacing: -1px;
-        background: linear-gradient(90deg, #ffffff, #69d9ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+    font-size: 3rem !important;
+    font-weight: 900 !important;
+    letter-spacing: -1.5px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #ffffff 35%,
+        var(--red-bright) 65%,
+        var(--green-bright) 100%
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow: 0 0 30px rgba(255, 43, 43, 0.08);
+}
+
 
     h2 {
-        color: #f2f7ff !important;
-        font-weight: 750 !important;
+        color: #effff4 !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.5px;
     }
+
 
     h3 {
-        color: #bfe9ff !important;
-        font-weight: 650 !important;
+        color: var(--green-bright) !important;
+        font-weight: 700 !important;
     }
 
-    p, label {
-        color: #b8c7dc !important;
+
+    p,
+    label {
+        color: var(--text-soft) !important;
     }
 
-    /* ---------- TOP CAPTION ---------- */
+
+    /* ---------- CAPTION ---------- */
 
     .stCaption {
-        color: #7f9bb8 !important;
+        color: #718c7b !important;
         font-size: 1rem !important;
     }
 
-    /* ---------- GLASS CONTAINERS ---------- */
+
+    /* =========================================================
+       CARDS / CONTAINERS
+       ========================================================= */
 
     div[data-testid="stVerticalBlock"] > div:has(
         div[data-testid="stMetric"]
     ) {
-        background: rgba(15, 27, 48, 0.55);
-        border: 1px solid rgba(130, 190, 255, 0.14);
+
+        background: rgba(7, 12, 8, 0.82);
+
+        border: 1px solid var(--green-border);
+
         border-radius: 18px;
+
         backdrop-filter: blur(18px);
+
+        box-shadow:
+            0 12px 35px rgba(0, 0, 0, 0.45);
     }
 
-    /* ---------- METRICS ---------- */
+
+    /* =========================================================
+       METRICS
+       ========================================================= */
 
     div[data-testid="stMetric"] {
-        background: rgba(15, 28, 48, 0.72);
-        border: 1px solid rgba(100, 190, 255, 0.18);
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(13, 20, 14, 0.95),
+                rgba(5, 10, 6, 0.95)
+            );
+
+        border: 1px solid rgba(0, 255, 102, 0.18);
+
         padding: 18px;
-        border-radius: 18px;
-        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+
+        border-radius: 16px;
+
+        box-shadow:
+            inset 0 1px rgba(255,255,255,0.025),
+            0 10px 30px rgba(0, 0, 0, 0.35);
+
+        transition: all 0.2s ease;
     }
+
+
+    div[data-testid="stMetric"]:hover {
+
+        border-color: rgba(0, 255, 102, 0.42);
+
+        box-shadow:
+            0 0 25px rgba(0, 255, 102, 0.08),
+            0 12px 35px rgba(0, 0, 0, 0.45);
+
+        transform: translateY(-2px);
+    }
+
 
     div[data-testid="stMetricLabel"] {
-        color: #7895b5 !important;
+        color: #718078 !important;
+        font-weight: 600 !important;
     }
+
 
     div[data-testid="stMetricValue"] {
-        color: #eaf7ff !important;
-        font-weight: 800 !important;
+
+        color: var(--green-bright) !important;
+
+        font-weight: 850 !important;
+
+        text-shadow:
+            0 0 18px rgba(0, 255, 102, 0.16);
     }
 
-    /* ---------- SIDEBAR ---------- */
+
+    /* =========================================================
+       SIDEBAR
+       ========================================================= */
 
     section[data-testid="stSidebar"] {
+
         background:
             linear-gradient(
                 180deg,
-                rgba(9, 18, 34, 0.96),
-                rgba(5, 12, 24, 0.98)
+                #070b08 0%,
+                #030603 100%
             );
-        border-right: 1px solid rgba(100, 190, 255, 0.12);
+
+        border-right:
+            1px solid rgba(0, 255, 102, 0.16);
+
+        box-shadow:
+            8px 0 35px rgba(0, 0, 0, 0.35);
     }
+
 
     section[data-testid="stSidebar"] h2 {
-        color: #dff6ff !important;
+
+        color: var(--green-bright) !important;
+
+        font-weight: 800 !important;
     }
+
 
     section[data-testid="stSidebar"] div[data-testid="stMetric"] {
-        background: rgba(16, 31, 52, 0.65);
+
+        background: rgba(8, 14, 9, 0.9);
+
+        border:
+            1px solid rgba(0, 255, 102, 0.15);
     }
 
-    /* ---------- SELECT BOX ---------- */
 
-    div[data-baseweb="select"] > div {
-        background: rgba(17, 31, 53, 0.75) !important;
-        border: 1px solid rgba(90, 180, 255, 0.22) !important;
-        border-radius: 12px !important;
-        color: white !important;
-    }
+   /* =========================================================
+   SELECT BOX — FIXED
+   ========================================================= */
 
-    /* ---------- BUTTONS ---------- */
+/* Main select box */
+div[data-baseweb="select"] {
+    position: relative !important;
+    z-index: 9999 !important;
+}
+
+div[data-baseweb="select"] > div {
+    background: #ffffff !important;
+    border: 1px solid #00ff66 !important;
+    border-radius: 12px !important;
+    color: #000000 !important;
+    min-height: 40px !important;
+}
+
+
+/* Selected value */
+div[data-baseweb="select"] span {
+    color: #000000 !important;
+}
+
+
+/* Actual input inside select */
+div[data-baseweb="select"] input {
+    color: #000000 !important;
+    caret-color: #000000 !important;
+}
+
+
+/* Dropdown arrow */
+div[data-baseweb="select"] svg {
+    color: #000000 !important;
+    fill: #000000 !important;
+}
+
+
+/* Dropdown container */
+div[data-baseweb="popover"] {
+    z-index: 999999 !important;
+}
+
+
+/* Dropdown menu */
+div[role="listbox"] {
+    background: #ffffff !important;
+    border: 1px solid #00ff66 !important;
+    border-radius: 10px !important;
+    z-index: 999999 !important;
+    pointer-events: auto !important;
+}
+
+
+/* Individual options */
+div[role="option"] {
+    background: #ffffff !important;
+    color: #000000 !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+
+/* Option text */
+div[role="option"] * {
+    color: #000000 !important;
+    pointer-events: none !important;
+}
+
+
+/* Hover */
+div[role="option"]:hover {
+    background: rgba(0, 255, 102, 0.15) !important;
+    color: #000000 !important;
+}
+
+
+/* Selected option */
+div[role="option"][aria-selected="true"] {
+    background: rgba(0, 255, 102, 0.12) !important;
+    color: #000000 !important;
+}
+    /* =========================================================
+       BUTTONS
+       ========================================================= */
 
     .stButton > button {
+
         width: 100%;
-        border-radius: 14px;
-        border: 1px solid rgba(90, 200, 255, 0.25);
-        background: rgba(25, 55, 82, 0.65);
-        color: #e9f8ff;
-        font-weight: 700;
+
+        border-radius: 12px;
+
+        border:
+            1px solid rgba(0, 255, 102, 0.22);
+
+        background:
+            linear-gradient(
+                135deg,
+                #0b120d,
+                #070c08
+            );
+
+        color: #eafff0;
+
+        font-weight: 750;
+
         padding: 0.75rem 1rem;
-        transition: all 0.2s ease;
-        backdrop-filter: blur(12px);
+
+        transition:
+            all 0.2s ease;
+
+        box-shadow:
+            inset 0 1px rgba(255,255,255,0.025);
     }
 
+
     .stButton > button:hover {
-        border-color: rgba(80, 210, 255, 0.7);
-        background: rgba(25, 85, 120, 0.75);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 180, 255, 0.18);
+
+        border-color:
+            rgba(0, 255, 102, 0.65);
+
+        color:
+            var(--green-bright);
+
+        background:
+            linear-gradient(
+                135deg,
+                #0d1b11,
+                #09120b
+            );
+
+        transform:
+            translateY(-2px);
+
+        box-shadow:
+            0 0 25px rgba(0, 255, 102, 0.12);
     }
+
 
     /* ---------- PRIMARY BUTTON ---------- */
 
     .stButton > button[kind="primary"] {
-        background: linear-gradient(
-            90deg,
-            #087ea4,
-            #2563c9
-        ) !important;
-        border: 1px solid rgba(110, 220, 255, 0.45) !important;
-        box-shadow:
-            0 0 20px rgba(0, 180, 255, 0.18),
-            inset 0 1px rgba(255,255,255,0.15);
-    }
+    background: linear-gradient(
+        90deg,
+        #8f0e0e,
+        var(--red)
+    ) !important;
 
-    .stButton > button[kind="primary"]:hover {
-        background: linear-gradient(
-            90deg,
-            #0a9bc8,
-            #3476df
-        ) !important;
-        box-shadow:
-            0 0 30px rgba(0, 190, 255, 0.30);
-    }
+    border: 1px solid var(--red-bright) !important;
+    color: white !important;
+    font-weight: 850 !important;
 
-    /* ---------- CODE / EVIDENCE ---------- */
+    box-shadow:
+        0 0 20px rgba(255, 43, 43, 0.20),
+        inset 0 1px rgba(255,255,255,0.20);
+}
+
+.stButton > button[kind="primary"]:hover {
+    background: linear-gradient(
+        90deg,
+        #b51212,
+        #ff4141
+    ) !important;
+
+    box-shadow:
+        0 0 32px rgba(255, 43, 43, 0.35);
+
+    transform: translateY(-2px);
+}
+/* =========================================================
+   HUMAN REVIEW — SECURITY APPROVAL PANEL
+   ========================================================= */
+
+/* Human Review section heading */
+h2:has(+ div) {
+    letter-spacing: -0.3px;
+}
+
+/* Human Review warning */
+div[data-testid="stAlert"] {
+    border-radius: 12px !important;
+}
+
+/* Radio container */
+div[role="radiogroup"] {
+    background: #080808 !important;
+    border: 1px solid #2d2d2d !important;
+    border-left: 3px solid #ff2b2b !important;
+    padding: 14px 18px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Radio labels */
+div[role="radiogroup"] label {
+    color: #dddddd !important;
+    font-weight: 700 !important;
+}
+
+/* Radio hover */
+div[role="radiogroup"] label:hover {
+    color: #39ff88 !important;
+}
+
+/* Selected radio */
+div[role="radiogroup"] label[data-checked="true"] {
+    color: #39ff88 !important;
+}
+
+/* Reviewer notes box */
+textarea {
+    background: #050505 !important;
+    border: 1px solid #292929 !important;
+    border-left: 3px solid #ff2b2b !important;
+    border-radius: 10px !important;
+    color: #f5f5f5 !important;
+    font-family: "Segoe UI", sans-serif !important;
+}
+
+textarea:focus {
+    border-color: #ff2b2b !important;
+    box-shadow:
+        0 0 0 1px rgba(255, 43, 43, 0.25),
+        0 0 20px rgba(255, 43, 43, 0.08) !important;
+}
+
+/* Submit Human Review button */
+.stButton > button[kind="primary"] {
+    background: linear-gradient(
+        90deg,
+        #8f0e0e,
+        #ff2b2b
+    ) !important;
+
+    border: 1px solid #ff4b4b !important;
+    color: #ffffff !important;
+
+    font-weight: 850 !important;
+    letter-spacing: 0.2px;
+
+    box-shadow:
+        0 0 18px rgba(255, 43, 43, 0.16),
+        inset 0 1px rgba(255,255,255,0.15);
+}
+
+.stButton > button[kind="primary"]:hover {
+    background: linear-gradient(
+        90deg,
+        #b51212,
+        #ff4141
+    ) !important;
+
+    border-color: #ff6b6b !important;
+
+    box-shadow:
+        0 0 28px rgba(255, 43, 43, 0.30) !important;
+
+    transform: translateY(-2px);
+}
+
+/* Success confirmation */
+div[data-testid="stAlert"] {
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+/* Human review info message */
+div[data-testid="stAlert"] p {
+    font-weight: 600 !important;
+}
+
+
+
+
+
+
+    /* =========================================================
+       CODE / TERMINAL EVIDENCE
+       ========================================================= */
 
     pre {
-        background: rgba(3, 12, 24, 0.78) !important;
-        border: 1px solid rgba(80, 170, 255, 0.16) !important;
-        border-radius: 14px !important;
-        padding: 18px !important;
-        box-shadow: inset 0 0 30px rgba(0, 100, 180, 0.05);
+
+        background:
+            #020603 !important;
+
+        border:
+            1px solid rgba(0, 255, 102, 0.18) !important;
+
+        border-radius:
+            14px !important;
+
+        padding:
+            18px !important;
+
+        box-shadow:
+            inset 0 0 35px rgba(0, 255, 102, 0.025);
+
+        position:
+            relative;
     }
+
 
     code {
-        color: #9ee8ff !important;
+
+        color:
+            #7dffa9 !important;
+
+        font-family:
+            "Consolas",
+            "Courier New",
+            monospace !important;
     }
 
-    /* ---------- SUCCESS / INFO / WARNING ---------- */
+
+    /* =========================================================
+       ALERTS
+       ========================================================= */
 
     div[data-testid="stAlert"] {
-        border-radius: 14px !important;
-        border: 1px solid rgba(100, 200, 255, 0.18);
-        background: rgba(20, 40, 65, 0.60);
-        backdrop-filter: blur(12px);
+
+        border-radius:
+            14px !important;
+
+        border:
+            1px solid rgba(0, 255, 102, 0.18);
+
+        background:
+            rgba(7, 15, 9, 0.85);
+
+        backdrop-filter:
+            blur(12px);
     }
 
-    /* ---------- RADIO ---------- */
+
+    /* =========================================================
+       RADIO BUTTONS
+       ========================================================= */
 
     div[role="radiogroup"] {
-        background: rgba(14, 27, 46, 0.60);
-        border: 1px solid rgba(100, 180, 255, 0.15);
-        padding: 12px 16px;
-        border-radius: 14px;
+
+        background:
+            rgba(7, 13, 8, 0.82);
+
+        border:
+            1px solid rgba(0, 255, 102, 0.15);
+
+        padding:
+            12px 16px;
+
+        border-radius:
+            14px;
     }
 
-    /* ---------- TEXT AREA ---------- */
+
+    /* =========================================================
+       TEXT AREA
+       ========================================================= */
 
     textarea {
-        background: rgba(10, 22, 38, 0.72) !important;
-        border: 1px solid rgba(90, 180, 255, 0.18) !important;
-        border-radius: 14px !important;
-        color: white !important;
+
+        background:
+            #060a07 !important;
+
+        border:
+            1px solid rgba(0, 255, 102, 0.18) !important;
+
+        border-radius:
+            14px !important;
+
+        color:
+            #effff4 !important;
     }
+
 
     textarea:focus {
-        border-color: rgba(70, 200, 255, 0.65) !important;
-        box-shadow: 0 0 20px rgba(0, 180, 255, 0.12) !important;
+
+        border-color:
+            rgba(0, 255, 102, 0.65) !important;
+
+        box-shadow:
+            0 0 22px rgba(0, 255, 102, 0.10) !important;
     }
 
-    /* ---------- DATAFRAME ---------- */
+
+    /* =========================================================
+       DATAFRAME
+       ========================================================= */
 
     div[data-testid="stDataFrame"] {
-        border-radius: 14px;
-        overflow: hidden;
-        border: 1px solid rgba(100, 190, 255, 0.14);
+
+        border-radius:
+            14px;
+
+        overflow:
+            hidden;
+
+        border:
+            1px solid rgba(0, 255, 102, 0.15);
+
+        box-shadow:
+            0 10px 30px rgba(0,0,0,0.3);
     }
 
-    /* ---------- DIVIDERS ---------- */
+
+    /* =========================================================
+       DIVIDERS
+       ========================================================= */
 
     hr {
-        border-color: rgba(100, 180, 255, 0.10) !important;
+
+        border-color:
+            rgba(0, 255, 102, 0.12) !important;
     }
 
-    /* ---------- SCROLLBAR ---------- */
+
+    /* =========================================================
+       SCROLLBAR
+       ========================================================= */
 
     ::-webkit-scrollbar {
         width: 8px;
     }
 
+
     ::-webkit-scrollbar-track {
-        background: #050914;
+        background:
+            #020402;
     }
+
 
     ::-webkit-scrollbar-thumb {
-        background: #183b58;
-        border-radius: 10px;
+
+        background:
+            #12351e;
+
+        border-radius:
+            10px;
     }
 
+
     ::-webkit-scrollbar-thumb:hover {
-        background: #24658d;
+
+        background:
+            #00a844;
     }
+
+
+    /* =========================================================
+       STREAMLIT INPUT TEXT
+       ========================================================= */
+
+    input {
+
+        color:
+            #effff4 !important;
+    }
+
+
+    /* =========================================================
+       EXPANDERS
+       ========================================================= */
+
+    div[data-testid="stExpander"] {
+
+        background:
+            rgba(7, 12, 8, 0.75);
+
+        border:
+            1px solid rgba(0, 255, 102, 0.14);
+
+        border-radius:
+            14px;
+    }
+
+
+    /* =========================================================
+       LINKS
+       ========================================================= */
+
+    a {
+
+        color:
+            var(--green-bright) !important;
+    }
+
 
 </style>
 """, unsafe_allow_html=True)
@@ -294,39 +777,45 @@ st.markdown(
         margin-top:28px;
         margin-bottom:20px;
         padding:22px 26px;
-        border-radius:20px;
-        background:linear-gradient(
-            135deg,
-            rgba(18,40,66,.72),
-            rgba(10,24,42,.48)
-        );
-        border:1px solid rgba(100,190,255,.16);
-        backdrop-filter:blur(18px);
-        box-shadow:0 15px 40px rgba(0,0,0,.20);
+        border-radius:18px;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(40,8,8,.92),
+                rgba(12,12,12,.96)
+            );
+
+        border:1px solid rgba(255,43,43,.32);
+
+        box-shadow:
+            0 15px 40px rgba(0,0,0,.45),
+            inset 3px 0 0 #ff2b2b;
     ">
+
         <div style="
-            color:#61d7ff;
-            font-size:14px;
-            font-weight:700;
-            letter-spacing:1px;
+            color:#ff4b4b;
+            font-size:13px;
+            font-weight:800;
+            letter-spacing:1.5px;
             text-transform:uppercase;
         ">
-            ACTIVE TROUBLESHOOTING CASE
+            ● ACTIVE TROUBLESHOOTING CASE
         </div>
 
         <div style="
-            color:#f3f8ff;
+            color:#f5f5f5;
             font-size:30px;
-            font-weight:800;
-            margin-top:5px;
+            font-weight:850;
+            margin-top:7px;
         ">
             {case['case_id']} — {case['concept_tag']}
         </div>
+
     </div>
     """,
     unsafe_allow_html=True
 )
-
 c1, c2 = st.columns(2)
 with c1:
     st.markdown("### 🐛 Symptom")
